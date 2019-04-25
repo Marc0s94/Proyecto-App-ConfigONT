@@ -43,7 +43,8 @@ public void conexion121(String ip, JTextArea area121) {
     this.sock121.getOutputStream().write(this.data.getBytes());
     this.sock121.getOutputStream().flush();
     
-    sock121.getOutputStream().write(this.data1.getBytes());  
+    sock121.getOutputStream().write(this.data1.getBytes());
+    sock121.getOutputStream().write("term length 0\n".getBytes());
     area121.append(receive());
     sock121.getOutputStream().flush(); 
   }
@@ -70,6 +71,7 @@ public void conexion122(String ip, JTextArea area122)
     this.sock122.getOutputStream().flush();
     
     sock122.getOutputStream().write(this.data1.getBytes());
+    sock122.getOutputStream().write("term length 0\n".getBytes());
     area122.append(receive());
     sock122.getOutputStream().flush(); 
   }
@@ -95,6 +97,7 @@ public void conexion221(String ip, JTextArea area221)
     this.sock221.getOutputStream().flush();
     
     sock221.getOutputStream().write(this.data1.getBytes());
+    sock221.getOutputStream().write("term length 0\n".getBytes());
     area221.append(receive());
     sock221.getOutputStream().flush(); 
   }
@@ -121,6 +124,7 @@ public void conexion521(String ip, JTextArea area521)
     this.sock521.getOutputStream().flush();
     
     sock521.getOutputStream().write(this.data1.getBytes());
+    sock521.getOutputStream().write("term length 0\n".getBytes());
     area521.append(receive());
     sock521.getOutputStream().flush(); 
   }
@@ -132,8 +136,7 @@ public void conexion521(String ip, JTextArea area521)
 
 
 public void comando(String command, JTextArea resultado){  
-   String nueva = null;
-   String prueba;
+    
     try {
         this.sockGlobal.getOutputStream().write(command.getBytes());
         resultado.append(receive());      
@@ -192,19 +195,16 @@ private  String receive() {
         strBuffer = new StringBuilder();
         byte[] buf = new byte[2048];
         int len = 0;
-        String prueba;
-        String nueva;
-        
         Thread.sleep(750L);
         while ((len = this.sockGlobal.getInputStream().read(buf)) != 0) { 
-            //strBuffer.append(new String(buf, 0, len));
-            prueba = new String(buf, 0, len);
+            strBuffer.append(new String(buf, 0, len));
+            //prueba = new String(buf, 0, len);
             
-            if (prueba.contains("--More--")) {
+           /* if (prueba.contains("--More--")) {
                 this.sockGlobal.getOutputStream().write("\n".getBytes());    
             }  
-            nueva = prueba.replaceAll("--More--", ""); 
-            strBuffer.append(nueva.replaceAll("         ", ""));
+            nueva = prueba.replaceAll("--More--", ""); */
+           // strBuffer.append(strBuffer.append(new String(buf, 0, len)));
 
             Thread.sleep(140L);
             if (this.sockGlobal.getInputStream().available() == 0)

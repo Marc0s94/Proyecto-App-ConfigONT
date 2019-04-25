@@ -5,14 +5,7 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -38,7 +31,7 @@ public class VisorTelnet extends javax.swing.JFrame {
         txtPort.setNextFocusableComponent(txtPos);
         
         
-        // SE PROCESA EL ARCHIVO PLANO DE CONFIGURACION Y SE AGREGA AL COMBOBOX
+        /*// SE PROCESA EL ARCHIVO PLANO DE CONFIGURACION Y SE AGREGA AL COMBOBOX
          String strLine = null;
          try{
             FileInputStream fstream = new FileInputStream("K:\\Solo Cursos\\TodoJavaUniversidad\\socketPractica\\src\\socketpractica\\Config.txt");
@@ -56,7 +49,7 @@ public class VisorTelnet extends javax.swing.JFrame {
             in.close();
           }catch (Exception e){
             System.err.println("Error: " + e.getMessage());
-  }
+  }*/
         
         
  
@@ -181,6 +174,7 @@ public class VisorTelnet extends javax.swing.JFrame {
         jPanel2.setToolTipText("");
         jPanel2.setName(""); // NOI18N
 
+        ComboBoxOlts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "CM-121", "CM-122", "PI-221", "JCP-521" }));
         ComboBoxOlts.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ComboBoxOltsItemStateChanged(evt);
@@ -293,7 +287,7 @@ public class VisorTelnet extends javax.swing.JFrame {
         panelDatosLayout.setHorizontalGroup(
             panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(113, Short.MAX_VALUE)
                 .addComponent(radioiptvcero)
                 .addGap(18, 18, 18)
                 .addComponent(radioiptvunoOdos)
@@ -313,7 +307,7 @@ public class VisorTelnet extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtPos, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
